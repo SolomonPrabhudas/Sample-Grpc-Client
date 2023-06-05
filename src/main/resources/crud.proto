@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package com.example.grpc;
+
+message CreateRequest {
+  string name = 1;
+  string role = 2;
+}
+
+message UpdateRequest {
+  string id = 1;
+  string name = 2;
+  string role = 3;
+}
+
+message DeleteRequest {
+  string id = 1;
+}
+
+message GetRequest {
+  string id = 1;
+}
+
+message Employee {
+  string id = 1;
+  string name = 2;
+  string role = 3;
+}
+
+service CrudService {
+  rpc create(CreateRequest) returns (Employee);
+  rpc update(UpdateRequest) returns (Employee);
+  rpc delete(DeleteRequest) returns (Employee);
+  rpc get(GetRequest) returns (Employee);
+}
